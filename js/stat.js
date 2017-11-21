@@ -14,6 +14,21 @@ window.renderStatistics = function (ctx, names, times) {
     return maxTime;
   };
 
+  var sortTimes = function () {
+    for (var i = 0; i <= times.length - 2; i++) {
+      var minValue = times[i];
+
+      for (var j = i + 1; j <= times.length - 1; j++) {
+        if (times[j] < minValue) {
+          minValue = times[j];
+          var swap = times[i];
+          times[i] = minValue;
+          times[j] = swap;
+        }
+      }
+    }
+  };
+
   ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
   ctx.shadowOffsetX = 10;
   ctx.shadowOffsetY = 10;
@@ -46,6 +61,8 @@ window.renderStatistics = function (ctx, names, times) {
   var startX = 120;
   var startY = 245;
   var lineHeight = 15;
+
+  sortTimes();
 
   for (var i = 0; i < times.length; i++) {
     var randomBlue = 'rgba(0, 0, 255, ' + Math.random() + ')';
