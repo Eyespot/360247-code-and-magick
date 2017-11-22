@@ -4,6 +4,7 @@
 window.renderStatistics = function (ctx, names, times) {
 
   var getMaxTime = function () {
+
     var maxTime = -1;
     for (var i = 0; i < times.length; i++) {
       var time = times[i];
@@ -15,15 +16,20 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   var sortTimes = function () {
+
     for (var i = 0; i <= times.length - 2; i++) {
       var minValue = times[i];
 
       for (var j = i + 1; j <= times.length - 1; j++) {
         if (times[j] < minValue) {
           minValue = times[j];
+          var minValueName = names[j];
           var swap = times[i];
+          var swapName = names[i];
           times[i] = minValue;
           times[j] = swap;
+          names[i] = minValueName;
+          names[j] = swapName;
         }
       }
     }
@@ -51,6 +57,7 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   var drawStatsCloud = function () {
+
     ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
     ctx.shadowOffsetX = 10;
     ctx.shadowOffsetY = 10;
@@ -72,6 +79,7 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   var drawStatsMessage = function () {
+
     ctx.font = '16px PT Mono';
     ctx.fillStyle = 'green';
     ctx.fillText('Ура вы победили!', 125, 40);
