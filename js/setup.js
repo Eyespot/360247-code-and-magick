@@ -4,7 +4,7 @@
 var setup = document.querySelector('.setup');
 var similarListElement = setup.querySelector('.setup-similar-list');
 var similarCharactersTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-var names = [
+var NAMES = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -14,7 +14,7 @@ var names = [
   'Люпита',
   'Вашингтон'
 ];
-var surnames = [
+var SURNAMES = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -24,7 +24,7 @@ var surnames = [
   'Нионго',
   'Ирвинг'
 ];
-var coatColors = [
+var COAT_COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -32,7 +32,7 @@ var coatColors = [
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)'
 ];
-var eyesColors = [
+var EYES_COLORS = [
   'black',
   'red',
   'blue',
@@ -53,24 +53,19 @@ function getRandomInteger(min, max) {
 }
 
 function getRandomName() {
-  var i = getRandomInteger(0, names.length - 1);
-  var j = getRandomInteger(0, surnames.length - 1);
-  var k = getRandomInteger(0, 1);
-  var name;
-  name = (k === 0) ? names[i] + ' ' + surnames[j] : surnames[j] + ' ' + names[i];
+  var order = getRandomInteger(0, 1);
+  var name = (order === 0) ? NAMES[getRandomInteger(0, NAMES.length - 1)] + ' ' + SURNAMES[getRandomInteger(0, SURNAMES.length - 1)] : SURNAMES[getRandomInteger(0, SURNAMES.length - 1)] + ' ' + NAMES[getRandomInteger(0, NAMES.length - 1)];
 
   return name;
 }
 
 function getRandomCoatColor() {
-  var i = getRandomInteger(0, coatColors.length - 1);
-  var coatColor = coatColors[i];
+  var coatColor = COAT_COLORS[getRandomInteger(0, COAT_COLORS.length - 1)];
   return coatColor;
 }
 
 function getRandomEyesColor() {
-  var i = getRandomInteger(0, eyesColors.length - 1);
-  var eyesColor = eyesColors[i];
+  var eyesColor = EYES_COLORS[getRandomInteger(0, EYES_COLORS.length - 1)];
   return eyesColor;
 }
 
