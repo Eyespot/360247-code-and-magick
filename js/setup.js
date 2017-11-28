@@ -53,8 +53,10 @@ function getRandomInteger(min, max) {
 }
 
 function getRandomName() {
+  var i = getRandomInteger(0, NAMES.length - 1);
+  var j = getRandomInteger(0, SURNAMES.length - 1);
   var order = getRandomInteger(0, 1);
-  var name = (order === 0) ? NAMES[getRandomInteger(0, NAMES.length - 1)] + ' ' + SURNAMES[getRandomInteger(0, SURNAMES.length - 1)] : SURNAMES[getRandomInteger(0, SURNAMES.length - 1)] + ' ' + NAMES[getRandomInteger(0, NAMES.length - 1)];
+  var name = (order === 0) ? NAMES[i] + ' ' + SURNAMES[j] : SURNAMES[j] + ' ' + NAMES[i];
 
   return name;
 }
